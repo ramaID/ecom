@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('product_ratings', function (Blueprint $table) {
-            $table->ulid();
+            $table->ulid('id');
             $table->foreignId('product_id');
             $table->float('rating', 4, 1)->unsigned(true);
             $table->longText('comment')->nullable(true);
