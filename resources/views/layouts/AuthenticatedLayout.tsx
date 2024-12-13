@@ -96,14 +96,6 @@ export default function AuthenticatedLayout({
                 <HomeIcon />
                 <SidebarLabel>Dashboard</SidebarLabel>
               </SidebarItem>
-              <SidebarItem href={route('authors.index')} current={route().current('authors.index')}>
-                <UsersIcon />
-                <SidebarLabel>Penulis</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem href={route('books.index')} current={route().current('books.index')}>
-                <BookOpenIcon />
-                <SidebarLabel>Buku</SidebarLabel>
-              </SidebarItem>
             </SidebarSection>
           </SidebarBody>
 
