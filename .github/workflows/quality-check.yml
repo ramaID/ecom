@@ -45,7 +45,7 @@ jobs:
 
       - name: Run Quality Check
         run: |
-          composer qc
+          composer test
           cp sonar-project.properties.example sonar-project.properties
           sonar-scanner -Dsonar.login=${{ secrets.SONAR_LOGIN }} -Dsonar.host.url=${{ secrets.SONAR_HOST }}
         working-directory: /var/www/html
