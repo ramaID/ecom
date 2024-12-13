@@ -1,0 +1,64 @@
+stages:
+  - deps
+  - build-frontend
+  - test-backend
+
+frontend-deps:
+  stage: deps
+  tags:
+    - bun
+  script:
+    - bun install --frozen-lockfile
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    fallback_keys:
+      - larapus-frontend
+    paths:
+      - node_modules/
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - node_modules/
+
+backend-deps:
+  stage: deps
+  tags:
+    - php
+  script:
+    - composer install --no-interaction --no-progress --no-suggest
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    fallback_keys:
+      - larapus-backend
+    paths:
+      - vendor/
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - vendor/
+
+frontend:
+  stage: build-frontend
+  tags:
+    - bun
+  script:
+    - bun run build
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - public/build/
+
+backend:
+  stage: test-backend
+  tags:
+    - php
+  script:
+    - cp .env.example .env
+    - php artisan key:generate
+    - composer test-gitlab
+  artifacts:
+    when: always
+    paths:
+      - coverage-junit.xml
+    reports:
+      junit: coverage-junit.xml

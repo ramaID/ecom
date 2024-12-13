@@ -1,0 +1,25 @@
+services:
+  php:
+    image: ramageek/image:php8.3-multi-stage
+    environment:
+      - PHP_OPCACHE_ENABLE=1
+    volumes:
+      - .:/var/www/html
+  #   links:
+  #     - pgsql
+  #   depends_on:
+  #     - pgsql
+  # pgsql:
+  #   image: postgres:latest
+  #   environment:
+  #     PGPASSWORD: '${PGPASSWORD:-secreted}'
+  #     POSTGRES_USER: '${DB_USER:-user}'
+  #     POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+  #     POSTGRES_DB: '${DB_NAME:-larapus}'
+  #   volumes:
+  #     - ./storage/postgres_data:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-user}"]
+  #     interval: 6s
+  #     timeout: 3s
+  #     retries: 5

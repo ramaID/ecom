@@ -1,0 +1,17 @@
+Lisensi Aplikasi Web Larapus
+
+Copyright (c) [2024] Qisthi Ramadhani
+
+Izin dengan ini diberikan, tanpa biaya, kepada siapa pun yang mendapatkan salinan aplikasi web Larapus ini dan file dokumentasi terkait ("Aplikasi"), untuk menggunakan Aplikasi tanpa batasan, termasuk tanpa batasan hak untuk menggunakan, menyalin, memodifikasi, menggabungkan, menerbitkan, mendistribusikan, mensublisensikan, dan/atau menjual salinan Aplikasi, dan untuk mengizinkan orang yang menerima Aplikasi untuk melakukan hal yang sama, dengan syarat berikut:
+
+1. Pengguna tidak diizinkan untuk mendistribusikan ulang, menjual, atau membagikan komponen-komponen individual yang terdapat dalam repositori private Aplikasi, termasuk namun tidak terbatas pada komponen-komponen dari TailwindUI.
+
+2. Penggunaan komponen-komponen dari TailwindUI tunduk pada lisensi TailwindUI yang berlaku.
+
+3. Pengguna wajib menyertakan pemberitahuan hak cipta di atas dan pemberitahuan izin ini pada semua salinan atau bagian substansial dari Aplikasi.
+
+4. Penggunaan komponen TailwindUI dalam Aplikasi ini dilakukan sebagai bagian dari keanggotaan dalam tim "Konsolidasi TailwindUI" dan tunduk pada ketentuan lisensi Tim TailwindUI.
+
+5. Aplikasi ini menggunakan framework Laravel yang merupakan software open-source dengan lisensi [MIT](https://opensource.org/licenses/MIT).
+
+APLIKASI INI DISEDIAKAN "SEBAGAIMANA ADANYA", TANPA JAMINAN APA PUN, BAIK TERSURAT MAUPUN TERSIRAT, TERMASUK NAMUN TIDAK TERBATAS PADA JAMINAN DAPAT DIPERDAGANGKAN, KESESUAIAN UNTUK TUJUAN TERTENTU DAN KETIADAAN PELANGGARAN. DALAM KEADAAN APA PUN PENULIS ATAU PEMEGANG HAK CIPTA TIDAK BERTANGGUNG JAWAB ATAS KLAIM, KERUSAKAN ATAU KEWAJIBAN LAINNYA, BAIK DALAM TINDAKAN KONTRAK, KESALAHAN ATAU LAINNYA, YANG TIMBUL DARI, DARI ATAU SEHUBUNGAN DENGAN APLIKASI ATAU PENGGUNAAN ATAU TRANSAKSI LAIN DALAM APLIKASI.
