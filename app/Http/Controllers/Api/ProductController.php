@@ -11,8 +11,7 @@ class ProductController extends Controller
 {
     public function __construct(
         private ProductService $productService
-    ) {
-    }
+    ) {}
 
     /**
      * Store a newly created resource in storage.
@@ -20,9 +19,11 @@ class ProductController extends Controller
     public function store(ProductStoreRequest $request)
     {
         $dto = ProductData::fromRequest($request);
+        $product = $this->productService->creating($dto);
 
-        $this->productService->creating($dto);
-
-        return response()->json(['message' => 'Product created successfully'], 201);
+        return response()->json([
+            'data' => $product,
+            'message' => 'Product created successfully',
+        ], 201);
     }
 }

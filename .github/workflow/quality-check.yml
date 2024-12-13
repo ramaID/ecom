@@ -1,0 +1,51 @@
+name: Quality Check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ramageek/image:php8.3-laravel-dev
+      options: --workdir /var/www/html
+
+    steps:
+      - name: Clone Repository
+        run: cd /var/www && rm -rf html && git clone https://github.com/ramaID/ecom.git html && cd html && ls
+
+      - name: Verify Clone
+        run: |
+          if [ -d "/var/www/html" ]; then
+            echo "Repository cloned successfully"
+            cd /var/www/html && ls -la
+          else
+            echo "Clone failed"
+            exit 1
+          fi
+
+      - name: Show Status
+        run: |
+          pwd
+          git status
+        working-directory: /var/www/html
+
+      - name: Setup Laravel
+        run: |
+          cp .env.example .env
+          git status
+          composer install --no-interaction --optimize-autoloader --quiet
+          php artisan key:gen
+          cp .env .env.testing
+        working-directory: /var/www/html
+
+      - name: Run Quality Check
+        run: |
+          composer qc
+          cp sonar-project.properties.example sonar-project.properties
+          sonar-scanner -Dsonar.login=${{ secrets.SONAR_LOGIN }} -Dsonar.host.url=${{ secrets.SONAR_HOST }}
+        working-directory: /var/www/html

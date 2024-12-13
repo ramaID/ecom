@@ -4,9 +4,11 @@ namespace App\Console\Commands;
 
 use App\Domain\Product\ProductData;
 use App\Domain\Product\ProductService;
+use App\Http\Requests\ProductStoreRequest;
 use App\Models\Category;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 use Spatie\LaravelData\Optional;
 
 class ProductCreationCommand extends Command
@@ -36,6 +38,21 @@ class ProductCreationCommand extends Command
 
         if (! $desc) {
             $desc = new Optional;
+        }
+
+        $request = new ProductStoreRequest([
+            'category_id' => $category,
+            'name' => $name,
+            'description' => $desc,
+            'price' => $price,
+        ]);
+
+        try {
+            $request->validate($request->rules());
+        } catch (ValidationException $th) {
+            $this->error($th->getMessage());
+
+            return self::FAILURE;
         }
 
         DB::beginTransaction();

@@ -12,7 +12,7 @@ class ProductData extends \Spatie\LaravelData\Data
         public string $category_id,
         public string $name,
         public string|Optional $description,
-        public string|Optional $price,
+        public float|Optional $price,
     ) {}
 
     public static function fromRequest(\Illuminate\Http\Request $request)

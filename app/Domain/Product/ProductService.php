@@ -7,13 +7,17 @@ use Spatie\LaravelData\Optional;
 
 final class ProductService
 {
-    public function creating(ProductData $data): void
+    public function __construct(
+        private Product $model
+    ) {}
+
+    public function creating(ProductData $data): Product
     {
         $description = $data->description instanceof Optional
             ? null
             : $data->description;
 
-        Product::query()->create([
+        return $this->model->query()->create([
             'category_id' => $data->category_id,
             'name' => $data->name,
             'description' => $description,
