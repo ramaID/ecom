@@ -1,0 +1,4 @@
+sonar.projectKey=ecom
+
+sonar.sources=app
+sonar.php.coverage.reportPaths=coverage.xml
