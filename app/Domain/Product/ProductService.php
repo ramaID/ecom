@@ -4,6 +4,7 @@ namespace App\Domain\Product;
 
 use App\Models\Product;
 use Spatie\LaravelData\Optional;
+use UnexpectedValueException;
 
 final class ProductService
 {
@@ -23,5 +24,17 @@ final class ProductService
             'description' => $description,
             'price' => $data->price,
         ]);
+    }
+
+    public function updatingStock(string $id, int $quantity): void
+    {
+        $product = $this->model->query()->findOrFail($id);
+
+        if ($product->quantity < $quantity) {
+            throw new UnexpectedValueException('Insufficient stock', 400);
+        }
+
+        $product->quantity = $product->quantity - $quantity;
+        $product->save();
     }
 }

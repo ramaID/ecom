@@ -2,7 +2,7 @@
 
 namespace App\Domain\Order;
 
-use App\Events\CustomOrderCreated;
+use App\Events\OrderCreated;
 use App\Models\Order;
 
 final class OrderService
@@ -20,7 +20,7 @@ final class OrderService
                 'total_price' => $data->total_price,
             ]);
 
-            CustomOrderCreated::dispatch($result);
+            OrderCreated::dispatch($result);
 
             return $result;
         } catch (\Exception $th) {

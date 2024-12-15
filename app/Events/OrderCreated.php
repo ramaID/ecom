@@ -7,7 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-class CustomOrderCreated
+class OrderCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
