@@ -11,8 +11,8 @@ class MakeOrderController extends Controller
 {
     public function __construct(
         private OrderService $service
-    ) {
-    }
+    ) {}
+
     /**
      * Handle the incoming request.
      */
